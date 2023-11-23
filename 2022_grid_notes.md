@@ -1,1 +1,0 @@
-I'm choosing 20220715 (4th flight) as I found this flight to contain most vegetation with least weed

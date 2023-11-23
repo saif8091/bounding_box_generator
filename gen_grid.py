@@ -10,8 +10,8 @@ area_thres = 1000
 morph_win = 11
 
 # directories
-path_to_save = 'generated_grid//2022_grid_4th.gpkg'
-raster_path =  'data//20220715_4th_micasense_1504.tif'
+path_to_save = 'generated_grid//2021_grid_2nd.gpkg'
+raster_path =  'data//20210707_2nd_merged_multispec.tif'
 
 # coordinates starts from northwest and goes clockwise
 geometries = [
@@ -44,7 +44,7 @@ mask = xarray_morphological_opening(msa_mask,morph_win)
 ### Generate the bounding boxes
 gdf_bbox = gen_bbox_mask(mask,height,width,area_thres)
 
-gdf_bbox.to_file(path_to_save, driver='GPKG', layer='20220715')
+gdf_bbox.to_file(path_to_save, driver='GPKG', layer='20210707')
 
 ### Plot
 fig, ax = plt.subplots(figsize=(10, 8))

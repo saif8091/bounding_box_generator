@@ -6,8 +6,8 @@ from veg_indices import *
 morph_win = 7
 
 # directories
-path_to_save = 'generated_mask//beet_mask_20220715.tif'
-raster_path =  'data//20220715_4th_micasense_1504.tif'
+path_to_save = 'generated_mask//beet_mask_20210720.tif'
+raster_path =  'data//20210720_1304_multispec_4.tif'
 
 # coordinates starts from northwest and goes clockwise
 geometries = [
