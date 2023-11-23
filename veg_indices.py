@@ -2,7 +2,15 @@
 import numpy as np
 
 class VI(object):
-    ''' example usage: VI(nano_wave,840,668).RD(preprocessed_image.T).T'''
+    ''' example usage:
+        # define the wavelength combination of your raster 
+        multispec_wave = np.array([475,560,668,717,840])
+        # To generate NDVI map:
+        # for image in the form of ch x height x width / or for spectrum(1-D array)
+        VI(multispec_wave,840,668).ND(raster) 
+        # for image in the form of height x width x ch
+        VI(multispec_wave,840,668).ND(raster.T).T
+        '''
     def __init__(self,full_wave,wave1,wave2,wave3=None,wave4=None):
         self.full_wave = full_wave
         self.wave1 = wave1
