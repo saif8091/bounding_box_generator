@@ -6,23 +6,22 @@ height = 1.5
 width = 0.75
 
 ### area thresholding
-area_thres = 1000
-morph_win = 11
+area_thres = 50
+morph_win = 3
 
 # directories
-path_to_save = 'generated_grid//2021_grid_2nd.gpkg'
-raster_path =  'data//20210707_2nd_merged_multispec.tif'
+path_to_save = 'generated_grid//byron_2022_grid.gpkg'
+raster_path =  'data//byron_2022_micasense.tif'
 
 # coordinates starts from northwest and goes clockwise
 geometries = [
     {
         'type': 'Polygon',
         'coordinates': [[
-            [334187, 4.749073e6],
-            [334222, 4.749073e6],
-            [334253, 4.749000e6],
-            [334258, 4.748965e6],
-            [334195, 4.748960e6]
+            [733917.17, 4775883.09],
+            [734035.09, 4775883.09],
+            [734035.09, 4775403.90],
+            [733917.17, 4775403.90]
         ]]
     }
 ]
@@ -36,7 +35,7 @@ print('clipping raster')
 clipped_raster = raster.rio.clip(geometries)
 
 ### Generating vegetation mask change as required
-msa_mask = VI(multispec_wave,840,668).MSA(clipped_raster) > 0.25
+msa_mask = VI(multispec_wave,840,668).RD(clipped_raster) > 0.60
 
 ### opening operation to remove small vegetation and smooth the boundaries
 mask = xarray_morphological_opening(msa_mask,morph_win)
@@ -44,7 +43,7 @@ mask = xarray_morphological_opening(msa_mask,morph_win)
 ### Generate the bounding boxes
 gdf_bbox = gen_bbox_mask(mask,height,width,area_thres)
 
-gdf_bbox.to_file(path_to_save, driver='GPKG', layer='20210707')
+gdf_bbox.to_file(path_to_save, driver='GPKG', layer='20220812')
 
 ### Plot
 fig, ax = plt.subplots(figsize=(10, 8))
