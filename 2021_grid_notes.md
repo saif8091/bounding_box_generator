@@ -1,1 +1,0 @@
-I'm choosing 20210707 (2nd flight) as I found this flight to contain most vegetation with least weed, while 20210720 (4th flight) for vegetation masking as the vegetation has expanded  with minimal weed.

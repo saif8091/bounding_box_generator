@@ -11,7 +11,7 @@ from skimage import measure
 from shapely.geometry import box
 from tqdm import tqdm
 
-multispec_wave = np.array([475,560,668,717,840])
+multispec_wave = np.array([560, 650, 730, 860])
 
 def xarray_morphological_opening(mask,disk_shape=9):
     '''This functionensures that the returned array is an xarray'''

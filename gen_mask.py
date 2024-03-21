@@ -3,22 +3,21 @@ differing morphological threshol and flight date'''
 from func import *
 from veg_indices import *
 
-morph_win = 7
+morph_win = 5
 
 # directories
-path_to_save = 'generated_mask//beet_mask_20210720.tif'
-raster_path =  'data//20210720_1304_multispec_4.tif'
+path_to_save = 'generated_mask//beet_mask_20230821.tif'
+raster_path =  'data//20230821_30m.tif'
 
 # coordinates starts from northwest and goes clockwise
 geometries = [
     {
         'type': 'Polygon',
         'coordinates': [[
-            [334187, 4.749073e6],
-            [334222, 4.749073e6],
-            [334253, 4.749000e6],
-            [334258, 4.748965e6],
-            [334195, 4.748960e6]
+            [334520.38,4749227.91],
+            [334577.46,4749217.20],
+            [334580.56,4749109.64],
+            [334523.35,4749107.87]
         ]]
     }
 ]
@@ -32,7 +31,7 @@ print('clipping raster')
 clipped_raster = raster.rio.clip(geometries)
 
 ### Generating vegetation mask change as required
-msa_mask = VI(multispec_wave,840,668).MSA(clipped_raster) > 0.25
+msa_mask = VI(multispec_wave,840,668).MSA(clipped_raster) > 0.35
 
 ### opening operation to remove small vegetation and smooth the boundaries
 mask = xarray_morphological_opening(msa_mask,morph_win)
